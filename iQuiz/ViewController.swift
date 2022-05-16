@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
     let subjectTitle : [String] = ["Mathematics", "Marvel Super Heros", "Science"]
-    let descriptions : [String] = ["Click and start the math quizzes!", "Click and start the Marvel Super Heros quizzes!", "Click and start the Science quizzes"]
+    let descriptions : [String] = ["Click and start the math quizzes!", "Click and start the Marvel Super Heros quizzes!", "Click and start the Science quizzes!"]
     let iconImage : [String] = ["Math", "Marvel", "Science"]
     
     @IBOutlet weak var tableView: UITableView!
@@ -48,6 +48,39 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 110.0
     }
     
+    // let subjectSelected = indexPath.row
+    // 0 1 2
+    //qie huan dao bie de VC
+    //:)
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//       let questionVC = storyboard?.instantiateViewController(withIdentifier: "QuestionVC") as? QuestionViewController
+//           questionVC?.questiontype = subjectTitle[indexPath.row]
+//          // self.navigationController?.pushViewController(questionVC ?? , animated: true)
+//
+//           self.present(questionVC!, animated: true)
+        //}
+//        let questionVC = (storyboard?.instantiateViewController(identifier: "QuestionVC"))!
+//        questionVC.questiontype = subjectTitle[indexPath.row]
+//        present(questionVC, animated: true, completion: nil)
+    //}
+    
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let questionVC = storyboard?.instantiateViewController(identifier: "QuestionVC") as! QuestionViewController
+//        questionVC.questiontype = subjectTitle[indexPath.row]
+//        present(questionVC, animated: true)
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let questionVC = storyboard?.instantiateViewController(withIdentifier: "QuestionVC") as? QuestionViewController {
+            self.navigationController?.pushViewController(questionVC, animated: true)
+        }
+    }
+    
+    
+
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,3 +90,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
 }
+
+
+/*
+ let scores = [
+    ”Marvel“: 5,
+    "Math": 3,
+    "Science": 10
+    ]
+ 
+ print(scores)
+ let archivePath = NSHomeDIrectory() + "/Documents/scores.archive"
+ print(archivePath)
+ let nsScores = scores as NSDictionary
+ nsScores.write(toFile: archieveFile, atomically: true)
+ 
+ print ("==== Documents directory")
+ if let files = try? fm.contentsOfDirectory(atPath: NSHomeDirectory() + "/Documents") {
+    for file in files {
+    NSLog("...\(file)")
+    }
+ }
+ 
+ 
+ */
