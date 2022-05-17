@@ -22,7 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
         NSLog("The \"OK\" alert occured.")
         }))
-        
+        alert.view.tintColor = UIColor.systemPurple
         self.present(alert, animated: true, completion: nil)
  
     }
@@ -31,9 +31,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return subjectTitle.count
     }
     
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return nil
-    }
+//    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+//        return nil
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
@@ -51,66 +51,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // let subjectSelected = indexPath.row
     // 0 1 2
     //qie huan dao bie de VC
-    //:)
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//       let questionVC = storyboard?.instantiateViewController(withIdentifier: "QuestionVC") as? QuestionViewController
-//           questionVC?.questiontype = subjectTitle[indexPath.row]
-//          // self.navigationController?.pushViewController(questionVC ?? , animated: true)
-//
-//           self.present(questionVC!, animated: true)
-        //}
-//        let questionVC = (storyboard?.instantiateViewController(identifier: "QuestionVC"))!
-//        questionVC.questiontype = subjectTitle[indexPath.row]
-//        present(questionVC, animated: true, completion: nil)
-    //}
-    
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let questionVC = storyboard?.instantiateViewController(identifier: "QuestionVC") as! QuestionViewController
-//        questionVC.questiontype = subjectTitle[indexPath.row]
-//        present(questionVC, animated: true)
-//    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let questionVC = storyboard?.instantiateViewController(withIdentifier: "QuestionVC") as? QuestionViewController {
+            questionVC.questiontype = subjectTitle[indexPath.row]
             self.navigationController?.pushViewController(questionVC, animated: true)
         }
     }
-    
-    
-
-
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        self.navigationItem.hidesBackButton = true
     }
 
 }
-
-
-/*
- let scores = [
-    ”Marvel“: 5,
-    "Math": 3,
-    "Science": 10
-    ]
- 
- print(scores)
- let archivePath = NSHomeDIrectory() + "/Documents/scores.archive"
- print(archivePath)
- let nsScores = scores as NSDictionary
- nsScores.write(toFile: archieveFile, atomically: true)
- 
- print ("==== Documents directory")
- if let files = try? fm.contentsOfDirectory(atPath: NSHomeDirectory() + "/Documents") {
-    for file in files {
-    NSLog("...\(file)")
-    }
- }
- 
- 
- */

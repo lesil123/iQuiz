@@ -9,12 +9,12 @@ import UIKit
 
 class QuestionViewController: UIViewController {
     
-    
     @IBOutlet weak var question: UILabel!
     @IBOutlet weak var optionA: UIButton!
     @IBOutlet weak var optionB: UIButton!
     @IBOutlet weak var optionC: UIButton!
     @IBOutlet weak var optionD: UIButton!
+    @IBOutlet weak var submitBtn: UIButton!
     
     
     let mathList : [Question] = [
@@ -27,8 +27,8 @@ class QuestionViewController: UIViewController {
 
     let marvelList : [Question] = [
         Question(questionText:"What year was the first Iron Man movie released, kicking off the Marvel Cinematic Universe?" , choiceA: "A: 2005", choiceB: "B: 2008", choiceC: "C: 2010", choiceD: "D: 2012", answer: 2),
-        Question(questionText: "What fake name does Natasha use when she first meets Tony in Iron Man 2?", choiceA: "A: Natalie Rushman", choiceB: "B: Norma Robinson", choiceC: "Naomi Roberts", choiceD: "Nicole Ryan", answer: 1),
-        Question(questionText: "What is the name of the little boy Tony befriends while stranded in the Iron Man 3?", choiceA: "A: Harry", choiceB: "B: Henry", choiceC: "C: Harley", choiceD: "Holden", answer: 3),
+        Question(questionText: "What fake name does Natasha use when she first meets Tony in Iron Man 2?", choiceA: "A: Natalie Rushman", choiceB: "B: Norma Robinson", choiceC: "C: Naomi Roberts", choiceD: "D: Nicole Ryan", answer: 1),
+        Question(questionText: "What is the name of the little boy Tony befriends while stranded in the Iron Man 3?", choiceA: "A: Harry", choiceB: "B: Henry", choiceC: "C: Harley", choiceD: "D: Holden", answer: 3),
         Question(questionText: "What animal does Darren Cross unsuccessfully shrink in the Ant-Man?", choiceA: "A: Mouse", choiceB: "B: Sheep", choiceC: "C: Duck", choiceD: "D: Hamster", answer: 2),
         Question(questionText: "What is the name of Thor’s hammer?", choiceA: "A: 28 Vanir", choiceB: "B: Mjolnir", choiceC: "C: Aesir", choiceD: "D: Norn", answer: 2)
       ]
@@ -44,23 +44,43 @@ class QuestionViewController: UIViewController {
     var fillinList : [Question] = [Question(questionText: "", choiceA: "", choiceB: "", choiceC: "", choiceD: "", answer: 0)]
                                       
     //var index = -1
-    var questiontype = ""
-    var questionProgress = 0
+    
     var scores = 0
     var rightAns = 0
-    var questionMenu = ""
+    //var questionMenu = ""
+    var questionProgress = 0
+    var tagSelected = 0
+    var btnIndex = 0
+    var choiceMsg = ""
+    var questiontype = ""
+    var colorBtn: [UIButton] = [UIButton]()
+
+     
     
     @IBAction func selectAnswer(_ sender: UIButton) {
-        let tagSelected = sender.tag
+        tagSelected = sender.tag
         if tagSelected == rightAns {
-            print("Correct!")
-            scores += 1
+            //print("Correct!")
+            choiceMsg = "You made the right choice! 🌞"
+            //scores += 1
         } else {
-            print("Wrong")
+            choiceMsg = "Unfortunately, the answer is incorrect. 🥀"
+            //print("Wrong")
         }
         
-        questionProgress += 1
-        showQuestion()
+        colorBtn = [optionA, optionB, optionC, optionD]
+        let btn = sender
+            for b in colorBtn {
+                if b == btn {
+                    b.tintColor = UIColor.systemPink
+                    //b.setTitleColor(UIColor.systemPink, for: .normal)
+                }
+        }
+        
+        //我这里会一直加吗？。。。//会！😠
+        //print(questionProgress)
+        submitBtn.isEnabled = true
+        
     }
     
     func showQuestion() {
@@ -73,7 +93,7 @@ class QuestionViewController: UIViewController {
             fillinList = scienceList
         }
          
-        if questionProgress <= mathList.count - 1 {
+        if questionProgress <= fillinList.count - 1 {
             
             question.text = fillinList[questionProgress].question
             optionA.setTitle(fillinList[questionProgress].optionA, for: UIControl.State.normal)
@@ -82,28 +102,42 @@ class QuestionViewController: UIViewController {
             optionD.setTitle(fillinList[questionProgress].optionD, for: UIControl.State.normal)
             rightAns = fillinList[questionProgress].correctAnswer
             
-        } else {
-//                    “let alert = UIAlertController(title: "Awesome", message: "End of Quiz. Do you want to start over?", preferredStyle: .alert)
-//                    //let restartAction = UIAlertAction(title: "Restart", style: .default, handler: {action in self.restartQuiz()})
-//                    alert.addAction(restartAction)
-//                    present(alert, animated: true, completion: nil)”
-                    
+      }
+        
+        questionProgress += 1
+    }
+     
+    
+    @IBAction func submitAns(_ sender: Any) {
+        
+        if tagSelected == rightAns {
+            scores += 1
+        }
+        
+       if let answerVC = storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as? AnswerViewController {
+           answerVC.questionArray = fillinList
+           answerVC.questionProgess = questionProgress
+           answerVC.choiceMsg = choiceMsg
+           answerVC.getScore = scores
+           answerVC.questionCategory = questiontype
+        self.navigationController?.pushViewController(answerVC, animated: true)
         }
     }
     
-    @IBAction func submitAns(_ sender: Any) {
-        let answerVC = (storyboard?.instantiateViewController(identifier: "AnswerVC"))!
-        present(answerVC, animated: true, completion: nil)
-    }
-    
     @IBAction func backHome(_ sender: Any) {
-        let mainVC = (storyboard?.instantiateViewController(identifier: "mainVC"))!
-        present(mainVC, animated: true, completion: nil)
+
+        if let mainVC = storyboard?.instantiateViewController(withIdentifier: "MainVC") as? ViewController {
+            self.navigationController?.pushViewController(mainVC, animated: true)
+        }
+        scores = 0
     }
     
     override func viewDidLoad() {
+        self.navigationItem.hidesBackButton = true
         super.viewDidLoad()
-
+        showQuestion()
+        submitBtn.isEnabled = false
+        
         // Do any additional setup after loading the view.
     }
     
