@@ -36,8 +36,9 @@ class AnswerViewController: UIViewController {
             correctAns.text = "The correct answer is \n \(questionArray[questionProgess - 1].optionD)"
         }
         
+        correctAns.textColor = UIColor.systemPurple
         information.text = choiceMsg
-            
+        
     }
 
     @IBAction func pressNext(_ sender: Any) {

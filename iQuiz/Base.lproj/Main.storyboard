@@ -152,7 +152,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="31.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="tinted" title="A">
-                                                    <color key="baseForegroundColor" red="0.70664578676223755" green="0.56793594360351562" blue="0.91525799036026001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="baseForegroundColor" systemColor="systemPurpleColor"/>
                                                     <color key="baseBackgroundColor" red="0.70664578676223755" green="0.56793594360351562" blue="0.91525799036026001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
@@ -163,7 +163,7 @@
                                                 <rect key="frame" x="0.0" y="48.5" width="300" height="32"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="tinted" title="B">
-                                                    <color key="baseForegroundColor" red="0.70664578676223755" green="0.56793594360351562" blue="0.91525799036026001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="baseForegroundColor" systemColor="systemPurpleColor"/>
                                                     <color key="baseBackgroundColor" red="0.70664578676223755" green="0.56793594360351562" blue="0.91525799036026001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
@@ -174,7 +174,7 @@
                                                 <rect key="frame" x="0.0" y="97.5" width="300" height="31.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="tinted" title="C">
-                                                    <color key="baseForegroundColor" red="0.70664578676223755" green="0.56793594360351562" blue="0.91525799036026001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="baseForegroundColor" systemColor="systemPurpleColor"/>
                                                     <color key="baseBackgroundColor" red="0.70664578676223755" green="0.56793594360351562" blue="0.91525799036026001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
@@ -185,7 +185,7 @@
                                                 <rect key="frame" x="0.0" y="146" width="300" height="31.5"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="tinted" title="D">
-                                                    <color key="baseForegroundColor" red="0.70664578676223755" green="0.56793594360351562" blue="0.91525799036026001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="baseForegroundColor" systemColor="systemPurpleColor"/>
                                                     <color key="baseBackgroundColor" red="0.70664578676223755" green="0.56793594360351562" blue="0.91525799036026001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
@@ -329,13 +329,13 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSV-Er-AOQ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scores！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RJ-Ec-q1H">
                                         <rect key="frame" x="0.0" y="123.5" width="300" height="123"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scores！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RJ-Ec-q1H">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSV-Er-AOQ">
                                         <rect key="frame" x="0.0" y="246.5" width="300" height="123.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -362,8 +362,8 @@
                         <constraints>
                             <constraint firstItem="iVB-fn-dLX" firstAttribute="top" secondItem="FBe-Co-LqM" secondAttribute="top" constant="10" id="3F6-Ks-HFo"/>
                             <constraint firstItem="FBe-Co-LqM" firstAttribute="bottom" secondItem="iY2-Rb-zhU" secondAttribute="bottom" constant="40" id="4Rl-JJ-FrB"/>
-                            <constraint firstItem="FBe-Co-LqM" firstAttribute="bottom" secondItem="2RJ-Ec-q1H" secondAttribute="bottom" constant="100" id="59H-Hq-ENO"/>
                             <constraint firstItem="FBe-Co-LqM" firstAttribute="trailing" secondItem="iY2-Rb-zhU" secondAttribute="trailing" constant="20" id="J61-Ht-Kyu"/>
+                            <constraint firstItem="FBe-Co-LqM" firstAttribute="bottom" secondItem="iVB-fn-dLX" secondAttribute="bottom" constant="100" id="JaI-Jl-hCC"/>
                             <constraint firstItem="iVB-fn-dLX" firstAttribute="leading" secondItem="FBe-Co-LqM" secondAttribute="leading" constant="10" id="NMk-kq-h8G"/>
                             <constraint firstItem="iY2-Rb-zhU" firstAttribute="leading" secondItem="FBe-Co-LqM" secondAttribute="leading" constant="20" id="Q7r-MC-JLE"/>
                             <constraint firstItem="FBe-Co-LqM" firstAttribute="trailing" secondItem="iVB-fn-dLX" secondAttribute="trailing" constant="10" id="wEK-nP-SBB"/>
@@ -401,6 +401,9 @@
         <image name="Math" width="1581" height="1514"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

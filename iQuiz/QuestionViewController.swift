@@ -43,11 +43,9 @@ class QuestionViewController: UIViewController {
     
     var fillinList : [Question] = [Question(questionText: "", choiceA: "", choiceB: "", choiceC: "", choiceD: "", answer: 0)]
                                       
-    //var index = -1
     
     var scores = 0
     var rightAns = 0
-    //var questionMenu = ""
     var questionProgress = 0
     var tagSelected = 0
     var btnIndex = 0
@@ -60,25 +58,22 @@ class QuestionViewController: UIViewController {
     @IBAction func selectAnswer(_ sender: UIButton) {
         tagSelected = sender.tag
         if tagSelected == rightAns {
-            //print("Correct!")
             choiceMsg = "You made the right choice! 🌞"
             //scores += 1
         } else {
             choiceMsg = "Unfortunately, the answer is incorrect. 🥀"
-            //print("Wrong")
         }
         
         colorBtn = [optionA, optionB, optionC, optionD]
         let btn = sender
             for b in colorBtn {
                 if b == btn {
-                    b.tintColor = UIColor.systemPink
-                    //b.setTitleColor(UIColor.systemPink, for: .normal)
+                    b.isSelected = true
+                } else {
+                    b.isSelected = false
                 }
         }
         
-        //我这里会一直加吗？。。。//会！😠
-        //print(questionProgress)
         submitBtn.isEnabled = true
         
     }

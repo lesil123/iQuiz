@@ -33,12 +33,7 @@ class FinishViewController: UIViewController {
             descriptiveText.text = "Give yourself one more chance. \n 💪🏻💪🏻"
             descriptiveText.textColor = UIColor.orange
         }
-        
-        //else if  1 <= gainScore <= totalScore * Int(0.5) {
-//            descriptiveText.text = "Give yourself one more chance. 💪🏻💪🏻"
-//        } else if gainScore == 0 {
-//            descriptiveText.text = "You should do more practices. 🫣"
-//        }
+    
         
         finalScore.text = "You got \(gainScore) out of \(totalScore)"
         // Do any additional setup after loading the view.
