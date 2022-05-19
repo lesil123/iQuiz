@@ -14,27 +14,34 @@ class AnswerViewController: UIViewController {
     @IBOutlet weak var correctAns: UILabel!
     @IBOutlet weak var information: UILabel!
     
-    var questionArray : [Question] = []
+    //var questionArray : [Question] = []
+    var questionArray : [ChooseCategory] = []
     var questionProgess = 0
     var getScore = 0
     var choiceMsg = ""
-    var questionCategory = ""
-    
+    var indexRow = -1
+    //var questionCategory = ""
+    var questionCategory : [ChooseCategory] = []
+    var correctAnswerIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
-        questionText.text = questionArray[questionProgess - 1].question
         
-        if questionArray[questionProgess - 1].correctAnswer == 1 {
-            correctAns.text = "The correct answer is \n \(questionArray[questionProgess - 1].optionA)"
-        } else if questionArray[questionProgess - 1].correctAnswer == 2 {
-            correctAns.text = "The correct answer is \n \(questionArray[questionProgess - 1].optionB)"
-        } else if questionArray[questionProgess - 1].correctAnswer == 3 {
-            correctAns.text = "The correct answer is \n \(questionArray[questionProgess - 1].optionC)"
-        } else if questionArray[questionProgess - 1].correctAnswer == 4 {
-            correctAns.text = "The correct answer is \n \(questionArray[questionProgess - 1].optionD)"
-        }
+        questionText.text = questionArray[indexRow].questions[questionProgess - 1].text
+        correctAnswerIndex = Int(questionArray[indexRow].questions[questionProgess - 1].answer)
+        
+        correctAns.text = "The correct answer is \n \(questionArray[indexRow].questions[questionProgess - 1].answers[correctAnswerIndex])"
+        
+//        if questionArray[indexRow].questions[questionProgess - 1].answer == 1 {
+//            correctAns.text = "The correct answer is \n \(questionArray[questionProgess - 1].optionA)"
+//        } else if questionArray[questionProgess - 1].correctAnswer == 2 {
+//            correctAns.text = "The correct answer is \n \(questionArray[questionProgess - 1].optionB)"
+//        } else if questionArray[questionProgess - 1].correctAnswer == 3 {
+//            correctAns.text = "The correct answer is \n \(questionArray[questionProgess - 1].optionC)"
+//        } else if questionArray[questionProgess - 1].correctAnswer == 4 {
+//            correctAns.text = "The correct answer is \n \(questionArray[questionProgess - 1].optionD)"
+//        }
         
         correctAns.textColor = UIColor.systemPurple
         information.text = choiceMsg

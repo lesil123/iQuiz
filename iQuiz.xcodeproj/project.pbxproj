@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1536262D2834C2A60013CDB7 /* ChooseCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536262C2834C2A60013CDB7 /* ChooseCategory.swift */; };
+		1536262F2834C2D50013CDB7 /* ChooseQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1536262E2834C2D50013CDB7 /* ChooseQuestions.swift */; };
 		153895A7282A1D8E001E1AE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153895A6282A1D8E001E1AE1 /* AppDelegate.swift */; };
 		153895A9282A1D8E001E1AE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153895A8282A1D8E001E1AE1 /* SceneDelegate.swift */; };
 		153895AB282A1D8E001E1AE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153895AA282A1D8E001E1AE1 /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1536262C2834C2A60013CDB7 /* ChooseCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCategory.swift; sourceTree = "<group>"; };
+		1536262E2834C2D50013CDB7 /* ChooseQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseQuestions.swift; sourceTree = "<group>"; };
 		153895A3282A1D8E001E1AE1 /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153895A6282A1D8E001E1AE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		153895A8282A1D8E001E1AE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 				15F8CEEA2830FD5900B70DB4 /* AnswerViewController.swift */,
 				15F8CEEC2830FD6400B70DB4 /* FinishViewController.swift */,
 				15F8CEEE2831CEF400B70DB4 /* Question.swift */,
+				1536262C2834C2A60013CDB7 /* ChooseCategory.swift */,
+				1536262E2834C2D50013CDB7 /* ChooseQuestions.swift */,
 				159915E728337A900011E726 /* Question.json */,
 				153895AC282A1D8E001E1AE1 /* Main.storyboard */,
 				153895AF282A1D90001E1AE1 /* Assets.xcassets */,
@@ -163,11 +169,13 @@
 			files = (
 				15F8CEEB2830FD5900B70DB4 /* AnswerViewController.swift in Sources */,
 				15F8CEEF2831CEF400B70DB4 /* Question.swift in Sources */,
+				1536262D2834C2A60013CDB7 /* ChooseCategory.swift in Sources */,
 				153895AB282A1D8E001E1AE1 /* ViewController.swift in Sources */,
 				15F8CEE92830DAAF00B70DB4 /* QuestionViewController.swift in Sources */,
 				15F8CEED2830FD6400B70DB4 /* FinishViewController.swift in Sources */,
 				15DF4CE4282A6E7A00003240 /* TableViewCell.swift in Sources */,
 				153895A7282A1D8E001E1AE1 /* AppDelegate.swift in Sources */,
+				1536262F2834C2D50013CDB7 /* ChooseQuestions.swift in Sources */,
 				153895A9282A1D8E001E1AE1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

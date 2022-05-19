@@ -14,7 +14,7 @@ class Question {
     let optionC: String
     let optionD: String
     let correctAnswer: Int
-    
+
     init(questionText: String, choiceA: String, choiceB: String, choiceC: String, choiceD: String, answer: Int) {
         question = questionText
         optionA = choiceA

@@ -16,7 +16,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var optionD: UIButton!
     @IBOutlet weak var submitBtn: UIButton!
     
-    
+    /*
     let mathList : [Question] = [
         Question(questionText: "What is the smallest one from the below number?", choiceA: "A: 5", choiceB: "B: 10", choiceC: "C: 45", choiceD: "D: 78", answer: 1),
         Question(questionText: "What is the answer to 3*5？", choiceA: "A: 9", choiceB: "B: 15" , choiceC: "C: 28", choiceD: "D: 40", answer: 2),
@@ -42,15 +42,20 @@ class QuestionViewController: UIViewController {
   ]
     
     var fillinList : [Question] = [Question(questionText: "", choiceA: "", choiceB: "", choiceC: "", choiceD: "", answer: 0)]
-                                      
+   */
     
     var scores = 0
     var rightAns = 0
     var questionProgress = 0
     var tagSelected = 0
     var btnIndex = 0
+    var rowIndex = -1 //new
     var choiceMsg = ""
-    var questiontype = ""
+    //var questiontype = "" // iQuiz2
+    
+    var questiontype : [ChooseCategory] = []
+    //var fillinQuestionType : [ChooseCategory] = []
+    
     var colorBtn: [UIButton] = [UIButton]()
 
      
@@ -80,24 +85,48 @@ class QuestionViewController: UIViewController {
     
     func showQuestion() {
         
-        if questiontype == "Mathematics" {
-            fillinList = mathList
-        } else if questiontype == "Marvel Super Heros" {
-            fillinList = marvelList
-        } else if questiontype == "Science" {
-            fillinList = scienceList
-        }
+//        if questiontype == "Mathematics" {
+//            fillinList = mathList
+//        } else if questiontype == "Marvel Super Heros" {
+//            fillinList = marvelList
+//        } else if questiontype == "Science" {
+//            fillinList = scienceList
+//        }
+        
+       // if questiontype[rowIndex].title == "Science!" {
+//            fillinList = mathList
+            // questiontype.title[0]
+            //question.text = questiontype[rowIndex].questions[0].text
+            
+       //     fillinQuestionType = questiontype
+            
+      //  } else if questiontype[rowIndex].title == "Marvel Super Heroes" {
+//                        fillinList = marvelList
+//            question.text = questiontype[rowIndex].questions[1].text
+        //} else if questiontype[rowIndex].title == "Mathematics" {
+//            question.text = questiontype[rowIndex].questions[2].text
+//                        fillinList = scienceList
+       // }
          
-        if questionProgress <= fillinList.count - 1 {
+//        if questiontype[rowIndex].title == "Science!" {
+//            // fillinQuestionType = questiontype[0].questions.text[0]
+//            questiontype = questiontype[0].questions.text[0]
+//        } else if questiontype[rowIndex].title == "Marvel Super Heroes" {
+//            fillinQuestionType = questiontype[1].questions.text[1]
+//        } else if questiontype[rowIndex].title == "Mathematics" {
+//            fillinQuestionType = questiontype[2].questions.text[2]
+//        }
             
-            question.text = fillinList[questionProgress].question
-            optionA.setTitle(fillinList[questionProgress].optionA, for: UIControl.State.normal)
-            optionB.setTitle(fillinList[questionProgress].optionB, for: UIControl.State.normal)
-            optionC.setTitle(fillinList[questionProgress].optionC, for: UIControl.State.normal)
-            optionD.setTitle(fillinList[questionProgress].optionD, for: UIControl.State.normal)
-            rightAns = fillinList[questionProgress].correctAnswer
-            
-      }
+       // if questionProgress <= fillinList.count - 1 {
+
+        question.text = questiontype[rowIndex].questions[questionProgress].text
+        optionA.setTitle(questiontype[rowIndex].questions[questionProgress].answers[0], for: UIControl.State.normal)
+        optionB.setTitle(questiontype[rowIndex].questions[questionProgress].answers[1], for: UIControl.State.normal)
+        optionC.setTitle(questiontype[rowIndex].questions[questionProgress].answers[2], for: UIControl.State.normal)
+        optionD.setTitle(questiontype[rowIndex].questions[questionProgress].answers[3], for: UIControl.State.normal)
+        rightAns = questiontype[rowIndex].questions[questionProgress].answer
+
+     // }
         
         questionProgress += 1
     }
@@ -110,11 +139,12 @@ class QuestionViewController: UIViewController {
         }
         
        if let answerVC = storyboard?.instantiateViewController(withIdentifier: "AnswerVC") as? AnswerViewController {
-           answerVC.questionArray = fillinList
+           answerVC.questionArray = questiontype
            answerVC.questionProgess = questionProgress
            answerVC.choiceMsg = choiceMsg
            answerVC.getScore = scores
            answerVC.questionCategory = questiontype
+           answerVC.indexRow = rowIndex
         self.navigationController?.pushViewController(answerVC, animated: true)
         }
     }
@@ -133,6 +163,8 @@ class QuestionViewController: UIViewController {
         showQuestion()
         submitBtn.isEnabled = false
         
+        
+
         // Do any additional setup after loading the view.
     }
     
