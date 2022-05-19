@@ -21,7 +21,7 @@ class AnswerViewController: UIViewController {
     var choiceMsg = ""
     var indexRow = -1
     //var questionCategory = ""
-    var questionCategory : [ChooseCategory] = []
+    //var questionCategory : [ChooseCategory] = []
     var correctAnswerIndex = -1
     
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class AnswerViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         
         questionText.text = questionArray[indexRow].questions[questionProgess - 1].text
-        correctAnswerIndex = Int(questionArray[indexRow].questions[questionProgess - 1].answer)
+        correctAnswerIndex = Int(questionArray[indexRow].questions[questionProgess - 1].answer)!
         
         correctAns.text = "The correct answer is \n \(questionArray[indexRow].questions[questionProgess - 1].answers[correctAnswerIndex])"
         
@@ -49,22 +49,42 @@ class AnswerViewController: UIViewController {
     }
 
     @IBAction func pressNext(_ sender: Any) {
-
-        if questionProgess < questionArray.count {
-            if let questionVC = storyboard?.instantiateViewController(withIdentifier: "QuestionVC") as? QuestionViewController {
-                questionVC.questiontype = questionCategory
-                questionVC.questionProgress = questionProgess
-                questionVC.scores = getScore
-                self.navigationController?.pushViewController(questionVC, animated: true)
-            }
-        } else if questionProgess == questionArray.count {
+/*
+        if questionProgess == questionArray.count - 1 {
             if let finishVC = storyboard?.instantiateViewController(withIdentifier: "FinishVC") as? FinishViewController {
                 finishVC.gainScore = getScore
                 finishVC.totalScore = questionArray.count
                 self.navigationController?.pushViewController(finishVC, animated: true)
             }
+        } else if questionProgess == questionArray.count {
+            if let questionVC = storyboard?.instantiateViewController(withIdentifier: "QuestionVC") as? QuestionViewController {
+                questionVC.questiontype = questionArray
+                questionVC.questionProgress = questionProgess
+                questionVC.scores = getScore
+                questionVC.rowIndex = indexRow
+                self.navigationController?.pushViewController(questionVC, animated: true)
+            }
+            
+        }
+ 
+*/
+        if questionProgess < questionArray[indexRow].questions.count {
+            if let questionVC = storyboard?.instantiateViewController(withIdentifier: "QuestionVC") as? QuestionViewController {
+              questionVC.questiontype = questionArray
+              questionVC.questionProgress = questionProgess
+              questionVC.scores = getScore
+              questionVC.rowIndex = indexRow
+              self.navigationController?.pushViewController(questionVC, animated: true)
+            }
+        } else {
+            if let finishVC = storyboard?.instantiateViewController(withIdentifier: "FinishVC") as? FinishViewController {
+            finishVC.gainScore = getScore
+            finishVC.totalScore = questionArray.count
+            self.navigationController?.pushViewController(finishVC, animated: true)
+            }
         }
     }
+  
     
     
     @IBAction func pressBack(_ sender: Any) {

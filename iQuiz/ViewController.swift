@@ -6,17 +6,27 @@
 //
 import Foundation
 import UIKit
+import Network
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingViewControllerProtocol {
+    func returnURL(_ url: String) {
+        externalURL = url
+    }
+    
+    func checkNow(_ sender: Any) {
+        fetchData(externalURL)
+    }
+    
   
     //let subjectTitle : [String] = ["Mathematics", "Marvel Super Heros", "Science"]
     // JSON subjectTitle
     //let subjectTitle : [ChooseCategory] = []
     
     // let descriptions : [String] = ["Click and start the math quizzes!", "Click and start the Marvel Super Heros quizzes!", "Click and start the Science quizzes!"]
-    let iconImage : [String] = ["Math", "Marvel", "Science"]
+    let iconImage : [String] = ["Science", "Marvel", "Math"]
     
     let Originurl = "https://tednewardsandbox.site44.com/questions.json"
+    var externalURL = ""
     var data: [ChooseCategory] = []
     //var index = 0
     
@@ -37,7 +47,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //    }
     
     
-//
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return subjectTitle.count
         return data.count
@@ -50,7 +59,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func fetchData(_ inputurl: String) {
        let url = URL (string: inputurl)
         //❗️initURL记得replace❗️
-        //let initURL = "http://tednewardsandbox.site44.com/questions.json")
+        //let initURL = "https://tednewardsandbox.site44.com/questions.json")
         
         //download json
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
@@ -89,6 +98,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     
     
+    /*
+    func fetchData(_ theurl: String) {
+          let url = URL (string: theurl)
+          
+          URLSession.shared.dataTask(with: url!) {
+              data, response, error in
+              guard let data = data else { return }
+              
+              if response != nil {
+                  if (response! as! HTTPURLResponse).statusCode != 200 {
+                      print("Something went wrong! \(error!)")
+                  }
+              }
+
+              if let questiontype = try? JSONDecoder().decode([ChooseCategory].self, from: data) {
+                  DispatchQueue.main.async {
+                      self.data = questiontype
+                      self.tableView.reloadData()
+                  }
+              }
+          }.resume()
+      }
+    */
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
@@ -117,6 +149,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.navigationController?.pushViewController(questionVC, animated: true)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let setting = segue.destination as? SettingViewController {
+            //把setting的delegate设成main vc的东西之后才可以call从setting vc protocol传过来的function
+            setting.delegate = self
+        }
+    }
         
     override func viewDidLoad() {
         
@@ -126,7 +165,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         self.navigationItem.hidesBackButton = true
-    
+        
+        //monitor
+        //if network satisfied
+        // 163
+        // else fetch local json
     }
 }
 

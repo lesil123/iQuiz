@@ -9,14 +9,14 @@ import Foundation
 
 class ChooseQuestions : Decodable {
     let text : String
-    let answer: Int
+    let answer: String
     let answers: [String]
-    let questions: [ChooseQuestions]
-    
-    init(textInit: String, answerInit: Int, answersInit: [String], questionsInit: [ChooseQuestions]) {
+    //let questions: [ChooseQuestions]
+    // questionsInit: [ChooseQuestions]
+    init(textInit: String, answerInit: String, answersInit: [String]) {
         text = textInit
         answer = answerInit
         answers = answersInit
-        questions = questionsInit
+        //questions = questionsInit
     }
 }

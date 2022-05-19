@@ -309,10 +309,10 @@
             </objects>
             <point key="canvasLocation" x="161" y="781"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="kQw-6g-2vd">
             <objects>
-                <viewController id="Irw-Lz-cVl" sceneMemberID="viewController">
+                <viewController id="Irw-Lz-cVl" customClass="SettingViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9P7-uz-0uR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -326,6 +326,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Check Now!">
                                     <color key="baseBackgroundColor" red="0.70664578676223755" green="0.56793594360351562" blue="0.91525799036026001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="checkNowBtn:" destination="Irw-Lz-cVl" eventType="touchUpInside" id="CWA-62-GYG"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="import your URL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zPP-U9-eYh">
                                 <rect key="frame" x="20" y="40" width="280" height="40"/>
@@ -348,6 +351,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oXT-fq-tgL"/>
+                    <connections>
+                        <outlet property="inputURL" destination="zPP-U9-eYh" id="AMr-fB-mrU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d56-jw-lyd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
