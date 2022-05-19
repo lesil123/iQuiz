@@ -26,7 +26,6 @@ class QuestionViewController: UIViewController {
     //var questiontype = "" // iQuiz2
     
     var questiontype : [ChooseCategory] = []
-    //var fillinQuestionType : [ChooseCategory] = []
     
     var colorBtn: [UIButton] = [UIButton]()
 

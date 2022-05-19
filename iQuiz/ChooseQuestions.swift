@@ -11,12 +11,11 @@ class ChooseQuestions : Decodable {
     let text : String
     let answer: String
     let answers: [String]
-    //let questions: [ChooseQuestions]
-    // questionsInit: [ChooseQuestions]
+
     init(textInit: String, answerInit: String, answersInit: [String]) {
         text = textInit
         answer = answerInit
         answers = answersInit
-        //questions = questionsInit
+
     }
 }
