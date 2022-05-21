@@ -48,7 +48,7 @@ class AnswerViewController: UIViewController {
         } else {
             if let finishVC = storyboard?.instantiateViewController(withIdentifier: "FinishVC") as? FinishViewController {
             finishVC.gainScore = getScore
-            finishVC.totalScore = questionArray.count
+            finishVC.totalScore = questionArray[indexRow].questions.count
             self.navigationController?.pushViewController(finishVC, animated: true)
             }
         }
